@@ -1,0 +1,268 @@
+CPSC 335 Notes:
+
+1a:
+Pseudocode:
+def exhaustive_alg(i):
+    result = []
+    if i >= 1:
+        result.append(0)
+    if i >= 2:
+        result.append(1)
+    while i >= 3:
+        result.append((result[-1]) + (result[-2]))
+        i = i - 1
+    return result
+
+Pseudocode:
+def exhaustive_alg(i):
+    if i == 1:
+        return 0
+    if i == 2:
+        return 1
+    f1 = 1
+    f2 = 0
+    fn = 1
+    for i in range(i-2): 
+        fn = f1 + f2 
+        f2 = f1
+        f1 = fn
+    return fn
+
+
+Pseudocode:
+def exhaustive_fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return exhaustive_fib(n - 1) + exhaustive_fib(n - 2)
+
+
+"""
+A.	The	Exhaustive Pattern
+The	first approach will involve	recursive calculation of each member of the	sequence.	
+a. Using the formular above, develop a recursive algorithm to calculate	the	nth terms of	
+the	sequence. The first	term of	the	sequence is	0, as shown above.	
+b. Print out the 15th term of the sequence.
+"""
+
+n_terms_string = input("Number of terms in Fibonacci sequence: ")
+n_terms = int(n_terms_string)
+"""
+if n_terms == 0:
+    print(0)
+elif n_terms == 1:
+    print(1)
+else:
+    f_1 = 1
+    f_2 = 0
+    print(f_2, f_1, sep=' ', end= ' ')
+    for i in range(n_terms - 2):
+        next_f = f_1 + f_2
+        f_2 = f_1
+        f_1 = next_f
+        p
+
+My second response with it not working for 1 term:
+def exhaustive_alg(i, fib_list):
+    """
+    exhaustive_alg function
+
+    input
+    i: the number of terms 
+    fib_list: list with the current values in the sequence
+
+    returns
+    fib_list: list with i values of the fibonacci sequence
+    """
+    if i <= 2:
+        return 1
+    else:
+        fib_list.append(int(fib_list[-1]) + int(fib_list[-2]))
+        exhaustive_alg(i - 1, fib_list)
+
+My Third Response: 
+def exhaustive_alg(i):
+    """
+    exhaustive_alg function
+
+    input
+    i: the number of terms
+
+    returns
+    fib_list: list with i values of the fibonacci sequence
+    """
+    fib_list = []
+    if i >= 1:
+        fib_list.append(0)
+    if i >= 2:
+        fib_list.append(1)
+    while i >= 3:
+        fib_list.append(int(fib_list[-1]) + int(fib_list[-2]))
+        i = i - 1
+    return fib_list[i]
+
+def main():
+    # ask user for n
+    n_terms = int(input("Number of terms in Fibonacci sequence: "))
+    i = n_terms
+    fib_list = [0, 1]
+
+    exhaustive_alg(i, fib_list)
+    print("The list is: ", fib_list)
+
+    # prints the 15th term of the sequence if at least 15 are calculated
+    if n_terms >= 15:
+        print("The 15th term is: ", fib_list[14])
+
+def main():
+    # ask user for n
+    # Obtain n from user input (positive integer and non-floating point)
+    """while True:
+        try:
+            n_terms = int(input("Please enter the number of terms in the Fibonacci sequence: "))
+        except ValueError:
+            print("Enter a postive, non-floating point integer")
+            # loop until correct value of p entered
+            continue
+        if n_terms <= 0:
+            print("n must be positive")
+            continue
+        else:
+            break
+    i = n_terms
+
+    fib_list = exhaustive_alg(i)
+    print("The list is: ", fib_list)
+
+    # prints the 15th term of the sequence if at least 15 are calculated
+    if n_terms >= 15:
+        print("The 15th term is: ", fib_list[14])
+    """
+    print(exhaustive(1))
+    print(exhaustive(3))
+    print(exhaustive(15))
+
+if __name__ == "__main__":
+    main()
+
+1b:
+Pseudocode:
+def formula4(n, p):
+
+
+def formula5(n):
+
+# Obtain p from user input (positive integer and non-floating point)
+while True:
+    try:
+        p = int(input("Please enter p (non-floating point, postive interger): "))
+    except ValueError:
+        print("Enter a postive, non-floating point integer")
+        # loop until correct value of p entered
+        continue
+    if p <= 0:
+        print("p must be positive")
+        continue
+    else:
+        break
+
+
+# Obtain n from user input (positive integer and non-floating point)
+while True:
+    try:
+        n = int(input("Please enter n (non-floating point, postive interger): "))
+    except ValueError:
+        print("Enter a postive, non-floating point integer")
+        # loop until correct value of p entered
+        continue
+    if n <= 0:
+        print("n must be positive")
+        continue
+    if n <= p:
+        print("n must be greater than p")
+    else:
+        break
+
+print("p is: ", p, "n is: ", n)
+
+def common_element_prob(L, R):
+    for x in L:
+        for y in R:
+            if x == y:
+                return x
+    return None
+
+
+    # B) 
+    # print the first 20 terms of the sequence using equation (4)
+    print_formula4(20)
+
+    # print the first 20 terms of the sequence using equation (5)
+    print_formula5(20)
+
+    # There is a maxim	that the ratio of two consecutive Fibonacci numbers approaches the Golden	
+    # Ratio, as n gets bigger
+    # d. Check and confirm or disprove the maxim above using F3 and F30. (from equation	
+    # 5 implementation
+    print("Calculating ratio of F4: F3")
+    f3 = formula3(3)
+    f4 = formula5(4)
+    print("F3 is: ", f3)
+    print("F4 is: ", f4)
+    print("the ratio F4:F3: ", f4/f3)
+    
+    print("Calculating ratio of F31: F30")
+    f30 = formula3(30)
+    f31 = formula5(31)
+    print("F30 is: ", f30)
+    print("F31 is: ", f31)
+    print("the ratio F31:F30: ", f31/f30)
+
+    golden = (1 + math.sqrt(5)) / 2
+    print("the golden ratio: ", golden)
+
+From project2.py:
+    # print the result of using equation 4 to get the nth term
+    print("The", n, "th term using equation 4 with p =", p, ":")
+    print(golden.formula4(n, p))
+
+    # print the result of using equation 5 to get the nth term
+    print("The", n, "th term using equation 5: ")
+    print(golden.formula5(n))
+
+    # Print the first 20 terms using equation 4
+    print("The first 20 terms using equation 4.")
+    golden.print_formula4(15)
+
+    # Print the first 20 terms using equation 5
+    print("The first 20 terms using equation 5.")
+    golden.print_formula5(15)
+
+    golden.check_maxim(3,30)
+
+    """
+    # Print F3 using equation 5
+    f3 = golden.formula5(3)
+    print("F3 =", f3)
+
+    # Print F30 using equation 5
+    f30 = golden.formula5(30)
+    print("F30 =", f30)
+
+    # Print F3:F2
+
+
+    # Print F30:29
+    """
+
+Part 2:
+
+largest sum (V):
+    b = 0, e = 1
+    for i from 0 to n-1:
+        for j from i+1 to n:
+            if sum(V[i:j]) > sum(V[b:e]):
+                b = i, e = j
+    return (b, e)
